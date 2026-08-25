@@ -1,0 +1,80 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="통합 교정 파이프라인">
+  <defs>
+    <style>
+      .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif}
+      .mono{font-family:"SFMono-Regular",Consolas,Menlo,monospace}
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1198" height="358" rx="18" fill="#f6f7f9" stroke="#e2e5ea" stroke-width="2"/>
+  <text x="40" y="48" class="mono" font-size="13" letter-spacing="2" fill="#8b92a0">통합 교정 · 한 번의 패스</text>
+
+  <!-- input -->
+  <g class="sans">
+    <rect x="40" y="74" width="150" height="86" rx="12" fill="#fbeee9" stroke="#e9c7bb"/>
+    <text x="115" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#b4472c">입력</text>
+    <text x="115" y="136" text-anchor="middle" font-size="13" fill="#b4472c">AI 초안 · 슬롭 90</text>
+  </g>
+
+  <!-- always-on base -->
+  <rect x="212" y="74" width="770" height="86" rx="12" fill="#ffffff" stroke="#d2d6dd"/>
+  <text x="232" y="102" class="mono" font-size="12" letter-spacing="1" fill="#33417a">ALWAYS-ON · 토대</text>
+  <text x="232" y="132" class="sans" font-size="16" font-weight="600" fill="#1b1e26">슬롭 제거 + 사실·목소리 보존</text>
+  <text x="232" y="152" class="sans" font-size="12.5" fill="#565d6b">~75 패턴 카탈로그 · 린터 · 한국어 어문 규범 교정</text>
+
+  <!-- output -->
+  <g class="sans">
+    <rect x="1004" y="74" width="156" height="86" rx="12" fill="#e9f2ec" stroke="#bfdcc9"/>
+    <text x="1082" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#2f7a57">출력</text>
+    <text x="1082" y="136" text-anchor="middle" font-size="13" fill="#2f7a57">자연스러운 글 · 0</text>
+  </g>
+
+  <!-- connectors -->
+  <path d="M190 117 H212" stroke="#8b92a0" stroke-width="3"/>
+  <path d="M982 117 H1004" stroke="#8b92a0" stroke-width="3"/>
+
+  <!-- korean holistic 6 steps -->
+  <text x="40" y="216" class="mono" font-size="12" letter-spacing="1" fill="#8b92a0">한국어: 목소리 없으면 표준 페르소나로 · 6단계</text>
+  <g class="sans" font-size="14.5" font-weight="600">
+    <!-- step template -->
+    <g>
+      <rect x="40" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
+      <text x="58" y="262" class="mono" font-size="11" fill="#8b92a0">01</text>
+      <text x="58" y="282" fill="#1b1e26">보존</text>
+    </g>
+    <g>
+      <rect x="228" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
+      <text x="246" y="262" class="mono" font-size="11" fill="#8b92a0">02</text>
+      <text x="246" y="282" fill="#1b1e26">어문 규범</text>
+    </g>
+    <g>
+      <rect x="416" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
+      <text x="434" y="262" class="mono" font-size="11" fill="#8b92a0">03</text>
+      <text x="434" y="282" fill="#1b1e26">슬롭·번역투</text>
+    </g>
+    <g>
+      <rect x="604" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
+      <text x="622" y="262" class="mono" font-size="11" fill="#8b92a0">04</text>
+      <text x="622" y="282" fill="#1b1e26">표준 용어</text>
+    </g>
+    <g>
+      <rect x="792" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
+      <text x="810" y="262" class="mono" font-size="11" fill="#8b92a0">05</text>
+      <text x="810" y="282" fill="#1b1e26">구성·흐름</text>
+    </g>
+    <g>
+      <rect x="980" y="234" width="180" height="58" rx="10" fill="#eef1f8" stroke="#c3cae6"/>
+      <text x="998" y="262" class="mono" font-size="11" fill="#8b92a0">06</text>
+      <text x="998" y="282" fill="#33417a">자연스러움</text>
+    </g>
+  </g>
+
+  <!-- tools row -->
+  <g class="mono" font-size="12.5">
+    <text x="40" y="330" fill="#8b92a0">도구</text>
+    <text x="86" y="330" fill="#565d6b">sloplint.js</text>
+    <text x="210" y="330" fill="#8b92a0">·</text>
+    <text x="228" y="330" fill="#565d6b">korterm.js (표준 용어)</text>
+    <text x="470" y="330" fill="#8b92a0">·</text>
+    <text x="488" y="330" fill="#565d6b">spellcheck.js (부산대 맞춤법)</text>
+  </g>
+</svg>

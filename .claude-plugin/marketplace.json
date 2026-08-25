@@ -1,0 +1,18 @@
+{
+  "name": "slop-check",
+  "owner": { "name": "onam2518" },
+  "metadata": {
+    "description": "AI 슬롭 제거 + 한국어 어문 규범·표준 문체 통합 교정 스킬 마켓플레이스",
+    "version": "1.0.0",
+    "pluginRoot": "."
+  },
+  "plugins": [
+    {
+      "name": "slop-check",
+      "source": "./",
+      "description": "슬롭 제거 + 한국어 통합 교정(규범·용어·표준 문체) 스킬 + IM-KOREAN 위임 에이전트.",
+      "version": "1.0.0",
+      "keywords": ["slop", "humanize", "korean", "deslop", "어문규범", "검수"]
+    }
+  ]
+}
