@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/cover.svg" alt="slop-check, remove AI tells and correct Korean prose" width="880">
+  <img src="assets/cover.svg" alt="slop-check-korean, remove AI tells and correct Korean prose" width="880">
 </p>
 
 <p align="center">
@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/license-MIT-555">
 </p>
 
-# slop-check · IM-KOREAN
+# slop-check-korean
 
 > **한국어**: [`README.md`](README.md)
 

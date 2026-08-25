@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/license-MIT-555">
 </p>
 
-# slop-check · IM-KOREAN
+# slop-check-korean
 
 > **English**: [`README.en.md`](README.en.md)
 
