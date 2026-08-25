@@ -1,80 +1,79 @@
-<svg width="1200" height="360" viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="통합 교정 파이프라인">
-  <defs>
-    <style>
-      .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif}
-      .mono{font-family:"SFMono-Regular",Consolas,Menlo,monospace}
-    </style>
-  </defs>
-  <rect x="1" y="1" width="1198" height="358" rx="18" fill="#f6f7f9" stroke="#e2e5ea" stroke-width="2"/>
-  <text x="40" y="48" class="mono" font-size="13" letter-spacing="2" fill="#8b92a0">통합 교정 · 한 번의 패스</text>
+<svg width="1200" height="430" viewBox="0 0 1200 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="통합 교정 파이프라인">
+  <style>
+    .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",Roboto,sans-serif}
+    .mono{font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace}
+    .serif{font-family:"Newsreader",Georgia,serif}
+  </style>
 
-  <!-- input -->
+  <rect x="0" y="0" width="1200" height="430" fill="#edeef0"/>
+
+  <!-- masthead -->
+  <text x="64" y="70" class="mono" font-size="13" letter-spacing="3" fill="#71757c">통합 교정  ·  ONE PASS</text>
+  <rect x="64" y="82" width="1072" height="2" fill="#1e2024"/>
+
+  <!-- flow row -->
   <g class="sans">
-    <rect x="40" y="74" width="150" height="86" rx="12" fill="#fbeee9" stroke="#e9c7bb"/>
-    <text x="115" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#b4472c">입력</text>
-    <text x="115" y="136" text-anchor="middle" font-size="13" fill="#b4472c">AI 초안 · 슬롭 90</text>
+    <text x="64" y="140" class="mono" font-size="12" letter-spacing="2" fill="#cf3b2c">입력</text>
+    <text x="64" y="166" font-size="17" fill="#4a4d54">AI 초안</text>
+    <text x="64" y="190" class="mono" font-size="13" fill="#cf3b2c">슬롭 90</text>
+
+    <!-- arrow -->
+    <path d="M150 160 H206" stroke="#9a9ea5" stroke-width="2"/>
+    <path d="M199 153 L208 160 L199 167" fill="none" stroke="#9a9ea5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- always-on -->
+    <text x="232" y="132" class="mono" font-size="12" letter-spacing="2" fill="#71757c">ALWAYS-ON · 토대</text>
+    <text x="232" y="166" class="serif" font-size="27" font-weight="600" fill="#1e2024">슬롭 제거 + 사실·목소리 보존</text>
+    <text x="232" y="192" font-size="14" fill="#4a4d54">~75 패턴 카탈로그 · 무의존성 린터 · 한국어 어문 규범</text>
+    <rect x="232" y="150" width="2" height="52" fill="#cf3b2c"/>
+
+    <!-- arrow -->
+    <path d="M980 160 H1036" stroke="#9a9ea5" stroke-width="2"/>
+    <path d="M1029 153 L1038 160 L1029 167" fill="none" stroke="#9a9ea5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="1062" y="140" class="mono" font-size="12" letter-spacing="2" fill="#1e2024">출력</text>
+    <text x="1062" y="166" font-size="17" fill="#1e2024">자연스러운 글</text>
+    <text x="1062" y="190" class="mono" font-size="13" fill="#1e2024">0</text>
   </g>
 
-  <!-- always-on base -->
-  <rect x="212" y="74" width="770" height="86" rx="12" fill="#ffffff" stroke="#d2d6dd"/>
-  <text x="232" y="102" class="mono" font-size="12" letter-spacing="1" fill="#33417a">ALWAYS-ON · 토대</text>
-  <text x="232" y="132" class="sans" font-size="16" font-weight="600" fill="#1b1e26">슬롭 제거 + 사실·목소리 보존</text>
-  <text x="232" y="152" class="sans" font-size="12.5" fill="#565d6b">~75 패턴 카탈로그 · 린터 · 한국어 어문 규범 교정</text>
+  <rect x="64" y="232" width="1072" height="1" fill="#cdced2"/>
 
-  <!-- output -->
+  <!-- 6 steps -->
+  <text x="64" y="272" class="mono" font-size="12" letter-spacing="2" fill="#71757c">한국어 · 목소리 없으면 표준 페르소나로 · 6단계</text>
   <g class="sans">
-    <rect x="1004" y="74" width="156" height="86" rx="12" fill="#e9f2ec" stroke="#bfdcc9"/>
-    <text x="1082" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#2f7a57">출력</text>
-    <text x="1082" y="136" text-anchor="middle" font-size="13" fill="#2f7a57">자연스러운 글 · 0</text>
-  </g>
-
-  <!-- connectors -->
-  <path d="M190 117 H212" stroke="#8b92a0" stroke-width="3"/>
-  <path d="M982 117 H1004" stroke="#8b92a0" stroke-width="3"/>
-
-  <!-- korean holistic 6 steps -->
-  <text x="40" y="216" class="mono" font-size="12" letter-spacing="1" fill="#8b92a0">한국어: 목소리 없으면 표준 페르소나로 · 6단계</text>
-  <g class="sans" font-size="14.5" font-weight="600">
-    <!-- step template -->
+    <!-- columns at x: 64,242,420,598,776,960 -->
     <g>
-      <rect x="40" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
-      <text x="58" y="262" class="mono" font-size="11" fill="#8b92a0">01</text>
-      <text x="58" y="282" fill="#1b1e26">보존</text>
+      <text x="64" y="316" class="mono" font-size="13" fill="#cf3b2c">01</text>
+      <text x="64" y="344" font-size="18" font-weight="600" fill="#1e2024">보존</text>
+      <rect x="210" y="300" width="1" height="52" fill="#d5d7db"/>
     </g>
     <g>
-      <rect x="228" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
-      <text x="246" y="262" class="mono" font-size="11" fill="#8b92a0">02</text>
-      <text x="246" y="282" fill="#1b1e26">어문 규범</text>
+      <text x="242" y="316" class="mono" font-size="13" fill="#9a9ea5">02</text>
+      <text x="242" y="344" font-size="18" font-weight="600" fill="#1e2024">어문 규범</text>
+      <rect x="388" y="300" width="1" height="52" fill="#d5d7db"/>
     </g>
     <g>
-      <rect x="416" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
-      <text x="434" y="262" class="mono" font-size="11" fill="#8b92a0">03</text>
-      <text x="434" y="282" fill="#1b1e26">슬롭·번역투</text>
+      <text x="420" y="316" class="mono" font-size="13" fill="#9a9ea5">03</text>
+      <text x="420" y="344" font-size="18" font-weight="600" fill="#1e2024">슬롭·번역투</text>
+      <rect x="566" y="300" width="1" height="52" fill="#d5d7db"/>
     </g>
     <g>
-      <rect x="604" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
-      <text x="622" y="262" class="mono" font-size="11" fill="#8b92a0">04</text>
-      <text x="622" y="282" fill="#1b1e26">표준 용어</text>
+      <text x="598" y="316" class="mono" font-size="13" fill="#9a9ea5">04</text>
+      <text x="598" y="344" font-size="18" font-weight="600" fill="#1e2024">표준 용어</text>
+      <rect x="744" y="300" width="1" height="52" fill="#d5d7db"/>
     </g>
     <g>
-      <rect x="792" y="234" width="168" height="58" rx="10" fill="#ffffff" stroke="#d2d6dd"/>
-      <text x="810" y="262" class="mono" font-size="11" fill="#8b92a0">05</text>
-      <text x="810" y="282" fill="#1b1e26">구성·흐름</text>
+      <text x="776" y="316" class="mono" font-size="13" fill="#9a9ea5">05</text>
+      <text x="776" y="344" font-size="18" font-weight="600" fill="#1e2024">구성·흐름</text>
+      <rect x="922" y="300" width="1" height="52" fill="#d5d7db"/>
     </g>
     <g>
-      <rect x="980" y="234" width="180" height="58" rx="10" fill="#eef1f8" stroke="#c3cae6"/>
-      <text x="998" y="262" class="mono" font-size="11" fill="#8b92a0">06</text>
-      <text x="998" y="282" fill="#33417a">자연스러움</text>
+      <text x="960" y="316" class="mono" font-size="13" fill="#cf3b2c">06</text>
+      <text x="960" y="344" font-size="18" font-weight="600" fill="#cf3b2c">자연스러움</text>
     </g>
   </g>
 
-  <!-- tools row -->
-  <g class="mono" font-size="12.5">
-    <text x="40" y="330" fill="#8b92a0">도구</text>
-    <text x="86" y="330" fill="#565d6b">sloplint.js</text>
-    <text x="210" y="330" fill="#8b92a0">·</text>
-    <text x="228" y="330" fill="#565d6b">korterm.js (표준 용어)</text>
-    <text x="470" y="330" fill="#8b92a0">·</text>
-    <text x="488" y="330" fill="#565d6b">spellcheck.js (부산대 맞춤법)</text>
-  </g>
+  <!-- footer -->
+  <rect x="64" y="378" width="1072" height="1" fill="#cdced2"/>
+  <text x="64" y="410" class="mono" font-size="12.5" letter-spacing="1" fill="#71757c">도구  sloplint.js · korterm.js (표준 용어) · spellcheck.js (부산대 맞춤법)</text>
 </svg>

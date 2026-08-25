@@ -11,6 +11,8 @@
 
 # slop-check · IM-KOREAN
 
+> **English**: [`README.en.md`](README.en.md)
+
 프로젝트가 만들어 내는 모든 산출물(문서 · README · 커밋 · 코드 주석 · 에이전트 답변)에서 **AI가 쓴 티(슬롭)를 걷어내는** 스킬입니다. 한국어는 여기에 더해 **어문 규범(맞춤법 · 띄어쓰기 · 높임 · 조사 · 호응) · 표준 용어 · 표준 문체**까지 한 번의 패스로 교정합니다.
 
 핵심 원칙은 두 가지입니다. **사실과 목소리는 한 글자도 바꾸지 않습니다.** 그리고 **점수 · 검사기 · API 결과는 근거일 뿐, 판정이 아닙니다.** 지킬 저자 목소리가 없는 생성물은 밋밋하게 두지 않고 신문 코퍼스로 보정한 표준 문체로 만듭니다.
@@ -22,8 +24,8 @@
 **Claude Code 플러그인 마켓플레이스 (권장)**
 
 ```
-/plugin marketplace add onam2518/slop-check
-/plugin install slop-check@slop-check
+/plugin marketplace add onam2518/slop-check-korean
+/plugin install slop-check@slop-check-korean
 ```
 
 새 세션에서 `/slop-check`, 또는 자연어로 "검수해줘 · 교정해줘 · 슬롭 제거해줘". 대량 작업은 `IM-KOREAN` 에이전트에 위임합니다.
@@ -31,9 +33,9 @@
 **클론 + 전역 심링크 (모든 프로젝트에서 사용)**
 
 ```bash
-git clone https://github.com/onam2518/slop-check.git
-ln -sfn "$(pwd)/slop-check/skills/slop-check" ~/.claude/skills/slop-check
-ln -sfn "$(pwd)/slop-check/agents/IM-KOREAN.md" ~/.claude/agents/IM-KOREAN.md
+git clone https://github.com/onam2518/slop-check-korean.git
+ln -sfn "$(pwd)/slop-check-korean/skills/slop-check" ~/.claude/skills/slop-check
+ln -sfn "$(pwd)/slop-check-korean/agents/IM-KOREAN.md" ~/.claude/agents/IM-KOREAN.md
 ```
 
 키가 없어도 핵심(슬롭 제거 · 규범 카탈로그 · 린터)은 모두 동작합니다. 외부 도구는 선택이며, 아래 [도구](#도구)를 참고하십시오.

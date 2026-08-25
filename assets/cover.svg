@@ -1,55 +1,42 @@
-<svg width="1200" height="380" viewBox="0 0 1200 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="slop-check — AI 슬롭 제거 + 한국어 통합 교정">
-  <defs>
-    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#b4472c"/>
-      <stop offset="1" stop-color="#2f7a57"/>
-    </linearGradient>
-    <style>
-      .serif{font-family:Georgia,"Times New Roman",serif}
-      .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
-      .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
-    </style>
-  </defs>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="slop-check — AI가 쓴 티를 걷어내고 사람의 문장으로">
+  <style>
+    .serif{font-family:"Newsreader",Georgia,"Times New Roman",serif}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",Roboto,sans-serif}
+    .mono{font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace}
+    .strike{text-decoration:line-through;text-decoration-color:#cf3b2c;text-decoration-thickness:2px}
+  </style>
 
-  <!-- panel -->
-  <rect x="1" y="1" width="1198" height="378" rx="20" fill="#f6f7f9" stroke="#e2e5ea" stroke-width="2"/>
-  <rect x="1" y="1" width="10" height="378" rx="5" fill="#33417a"/>
-
-  <!-- wordmark -->
-  <text x="64" y="96" class="mono" font-size="15" letter-spacing="3" fill="#8b92a0">SLOP · CHECK &#8211; IM·KOREAN</text>
-  <text x="60" y="168" class="serif" font-size="76" font-weight="600" fill="#1b1e26">slop-check</text>
-
-  <!-- tagline -->
-  <text x="64" y="212" class="sans" font-size="23" fill="#565d6b">AI 슬롭을 제거하고, 한국어는 어문 규범·표준 문체까지</text>
-  <text x="64" y="244" class="sans" font-size="23" fill="#565d6b">한 번에 <tspan font-weight="700" fill="#1b1e26">통합 교정</tspan>합니다. 사실과 목소리는 그대로.</text>
-
-  <!-- feature chips -->
-  <g class="sans" font-size="15">
-    <rect x="64" y="286" width="196" height="40" rx="20" fill="#ffffff" stroke="#d2d6dd"/>
-    <text x="84" y="311" fill="#33417a" font-weight="600">10개 스킬 병합</text>
-    <rect x="272" y="286" width="234" height="40" rx="20" fill="#ffffff" stroke="#d2d6dd"/>
-    <text x="292" y="311" fill="#33417a" font-weight="600">국립국어원 코퍼스 실측</text>
-    <rect x="518" y="286" width="232" height="40" rx="20" fill="#ffffff" stroke="#d2d6dd"/>
-    <text x="538" y="311" fill="#33417a" font-weight="600">무의존성 린터 (EN·KO)</text>
+  <!-- paper -->
+  <rect x="0" y="0" width="1200" height="630" fill="#edeef0"/>
+  <!-- crop marks (proof motif) -->
+  <g stroke="#b9bcc2" stroke-width="1.5">
+    <path d="M28 46 H52 M46 28 V52"/><path d="M1172 46 H1148 M1154 28 V52"/>
+    <path d="M28 584 H52 M46 602 V578"/><path d="M1172 584 H1148 M1154 602 V578"/>
   </g>
 
-  <!-- right: score before/after -->
-  <g transform="translate(812,70)">
-    <rect x="0" y="0" width="326" height="240" rx="16" fill="#ffffff" stroke="#e2e5ea"/>
-    <text x="163" y="40" text-anchor="middle" class="mono" font-size="13" letter-spacing="2" fill="#8b92a0">슬롭 점수 (측정값)</text>
+  <!-- masthead -->
+  <text x="64" y="92" class="mono" font-size="14" letter-spacing="3" fill="#71757c">SLOP · CHECK  /  IM · KOREAN</text>
+  <text x="1136" y="92" text-anchor="end" class="mono" font-size="14" letter-spacing="3" fill="#71757c">교정쇄  EN · KO</text>
+  <rect x="64" y="104" width="1072" height="2" fill="#1e2024"/>
 
-    <!-- AS-IS -->
-    <text x="70" y="132" text-anchor="middle" class="serif" font-size="72" font-weight="700" fill="#b4472c">90</text>
-    <text x="70" y="160" text-anchor="middle" class="mono" font-size="12" letter-spacing="1" fill="#b4472c">AS-IS</text>
+  <!-- title -->
+  <text x="60" y="268" class="serif" font-size="130" font-weight="600" letter-spacing="-2" fill="#1e2024">slop-check</text>
+  <text x="64" y="318" class="sans" font-size="25" fill="#4a4d54">AI가 쓴 티를 걷어내고, <tspan fill="#1e2024" font-weight="600">사실은 그대로</tspan> 사람의 문장으로.</text>
 
-    <!-- arrow -->
-    <path d="M120 112 H206" stroke="url(#rg)" stroke-width="4" stroke-linecap="round"/>
-    <path d="M198 102 L212 112 L198 122" fill="none" stroke="#2f7a57" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- proof delete mark -->
+  <path d="M1050 150 C 1072 118, 1124 118, 1132 154 C 1138 184, 1102 206, 1078 194 C 1062 186, 1066 164, 1086 162 C 1110 160, 1122 184, 1110 206" fill="none" stroke="#cf3b2c" stroke-width="6" stroke-linecap="round"/>
 
-    <!-- TO-BE -->
-    <text x="256" y="132" text-anchor="middle" class="serif" font-size="72" font-weight="700" fill="#2f7a57">0</text>
-    <text x="256" y="160" text-anchor="middle" class="mono" font-size="12" letter-spacing="1" fill="#2f7a57">TO-BE</text>
+  <!-- correction demo -->
+  <g>
+    <text x="64" y="452" class="mono" font-size="13" letter-spacing="2" fill="#cf3b2c">AS-IS</text>
+    <text x="168" y="452" class="sans" font-size="21" fill="#4a4d54"><tspan class="strike">오늘날 빠르게 변화하는 시대에서,</tspan> 우리 팀은 생산성을 <tspan class="strike">혁신적으로 향상시키기 위해 최선을 다합니다.</tspan></text>
 
-    <text x="163" y="210" text-anchor="middle" class="sans" font-size="14" fill="#565d6b">사실 보존 · 목소리 보존</text>
+    <text x="64" y="498" class="mono" font-size="13" letter-spacing="2" fill="#1e2024">TO-BE</text>
+    <text x="168" y="498" class="sans" font-size="21" font-weight="600" fill="#1e2024">우리 팀은 배포를 자동화했다. 릴리스 시간이 40분에서 4분으로 줄었다.</text>
   </g>
+
+  <!-- footer -->
+  <rect x="64" y="548" width="1072" height="1" fill="#cdced2"/>
+  <text x="64" y="582" class="mono" font-size="12.5" letter-spacing="1.5" fill="#71757c">10 SKILLS MERGED · ZERO-DEP LINTER · 국립국어원 CORPORA</text>
+  <text x="1136" y="582" text-anchor="end" class="mono" font-size="12.5" letter-spacing="1.5" fill="#71757c">MIT</text>
 </svg>

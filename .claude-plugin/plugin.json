@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "산출물의 AI 슬롭을 제거하고 한국어는 어문 규범·표준 문체까지 통합 교정하는 스킬 + IM-KOREAN 에이전트. 사실·목소리 보존, 목소리 없는 생성물은 표준 페르소나로.",
   "author": { "name": "onam2518" },
-  "homepage": "https://github.com/onam2518/slop-check",
-  "repository": "https://github.com/onam2518/slop-check",
+  "homepage": "https://github.com/onam2518/slop-check-korean",
+  "repository": "https://github.com/onam2518/slop-check-korean",
   "license": "MIT",
   "keywords": ["slop", "humanize", "korean", "deslop", "어문규범", "번역투", "ai-tell", "검수"]
 }
