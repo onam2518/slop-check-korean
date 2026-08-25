@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/cover.svg" alt="slop-check-korean, remove AI tells and correct Korean prose" width="880">
+  <img src="assets/cover.svg?v=2" alt="slop-check-korean, remove AI tells and correct Korean prose" width="880">
 </p>
 
 <p align="center">
@@ -58,7 +58,7 @@ English humanizers are weak on Korean, and most tools strip slop and leave the t
 ## How it works
 
 <p align="center">
-  <img src="assets/pipeline.svg" alt="one-pass correction pipeline" width="960">
+  <img src="assets/pipeline.svg?v=2" alt="one-pass correction pipeline" width="960">
 </p>
 
 Slop removal and fact/voice preservation are the **always-on base**. On top, two modes split on whether the source has a real author voice: **preserve** it, or supply the newspaper-calibrated **standard persona**. Korean runs six steps: preserve, 어문 규범, slop and translationese, standard terminology, structure, naturalness.

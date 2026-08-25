@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/cover.svg" alt="slop-check, AI 슬롭 제거 + 한국어 통합 교정" width="880">
+  <img src="assets/cover.svg?v=2" alt="slop-check-korean · AI 슬롭 제거와 한국어 통합 교정" width="880">
 </p>
 
 <p align="center">
@@ -58,7 +58,7 @@ ln -sfn "$(pwd)/slop-check-korean/agents/IM-KOREAN.md" ~/.claude/agents/IM-KOREA
 ## 어떻게 동작하나
 
 <p align="center">
-  <img src="assets/pipeline.svg" alt="통합 교정 파이프라인" width="960">
+  <img src="assets/pipeline.svg?v=2" alt="통합 교정 파이프라인" width="960">
 </p>
 
 슬롭 제거와 사실 · 목소리 보존이 **항상 켜진 토대**입니다. 그 위에서, 저자 목소리 유무로 두 갈래가 갈립니다.
