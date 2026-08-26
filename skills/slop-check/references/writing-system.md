@@ -39,6 +39,16 @@ Detectors measure sentence-length variance. Human writing is high-variance, AI i
 
 Detectors also measure how predictable each word is; human text is less predictable. Reach past the first word that comes to mind. Use domain-specific terms the audience knows. Make analogies from real experience. This is a natural side effect of specificity, not a trick to run on its own; a specific, opinionated draft is already high-perplexity.
 
+## Measured craft targets (from professional writing)
+
+The standard is not just "no errors" but "well written". These are what well-written Korean measures at, from a 6,000-article professional corpus (→ `korean-baseline.md`); AI slop fails all three, and English behaves the same way.
+
+- **Vocabulary diversity (type-token ~0.82).** Do not recycle words. Synonym cycling, repeated stock phrases, and one-word-per-idea padding all cut diversity. Repeat the clear word; never fill with interchangeable filler.
+- **Concreteness (about half of sentences carry a number or specific).** Well-written prose is dense with facts: "cut review time from 40 minutes to 8", not "improved productivity". Surface the specific that is already there; never invent one.
+- **Sentence-length variety (burstiness ~0.45 within a piece).** Mix short and long; break a uniform mid-length run. This is the measured human value, and the linter's `stats` burstiness threshold (0.45) is calibrated to it.
+
+These are targets for the standard voice, not a detector trick. A draft that repeats words, states vague benefits, and marches at one sentence length is machine-shaped even with clean vocabulary.
+
 ## Voice profiles (when a register is chosen)
 
 - **casual:** contractions always; first person where it fits; informal transitions; fragments for emphasis; "And"/"But" starters allowed.
