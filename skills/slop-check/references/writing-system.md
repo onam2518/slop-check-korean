@@ -41,11 +41,12 @@ Detectors also measure how predictable each word is; human text is less predicta
 
 ## Measured craft targets (from professional writing)
 
-The standard is not just "no errors" but "well written". These are what well-written Korean measures at, from a 6,000-article professional corpus (→ `korean-baseline.md`); AI slop fails all three, and English behaves the same way.
+The standard is not just "no errors" but "well written". These are measured over two well-written Korean corpora — professional newspaper and copyright-cleared nonfiction books (→ `korean-baseline.md`). Comparing the two separated the universal signals from the genre-specific ones.
 
-- **Vocabulary diversity (type-token ~0.82).** Do not recycle words. Synonym cycling, repeated stock phrases, and one-word-per-idea padding all cut diversity. Repeat the clear word; never fill with interchangeable filler.
-- **Concreteness (about half of sentences carry a number or specific).** Well-written prose is dense with facts: "cut review time from 40 minutes to 8", not "improved productivity". Surface the specific that is already there; never invent one.
-- **Sentence-length variety (burstiness ~0.45 within a piece).** Mix short and long; break a uniform mid-length run. This is the measured human value, and the linter's `stats` burstiness threshold (0.45) is calibrated to it.
+- **Vocabulary diversity (type-token 0.82-0.86). Universal, the most robust signal.** Do not recycle words. Synonym cycling, repeated stock phrases, and one-idea-per-word padding all cut diversity. Repeat the clear word; never fill with interchangeable filler. This is what AI slop fails most reliably.
+- **Sentence-length variety (burstiness ~0.45-0.5 within a piece). Universal.** Mix short and long; break a uniform mid-length run. The linter's `stats` burstiness threshold (0.45) is calibrated to it.
+- **Specific over vague — but the form of the specific follows the register.** Fact-dense writing (news, reports) packs numbers: half its sentences carry one (~0.57). Conceptual writing (essays, philosophy, social science) rarely does (~0.10); its specifics are named concepts, cases, and mechanisms. So write "cut review time from 40 minutes to 8" where numbers belong, and a named mechanism or example where they don't. Never invent a number to look concrete.
+- **Sentence length is not a target.** News runs ~15 eojeol, conceptual books ~10; it is genre-dependent. Judge uniformity, never absolute length.
 
 These are targets for the standard voice, not a detector trick. A draft that repeats words, states vague benefits, and marches at one sentence length is machine-shaped even with clean vocabulary.
 
