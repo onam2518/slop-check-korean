@@ -279,6 +279,27 @@
       "note": "Name the human doing the thing."
     },
     {
+      "id": "ko-double-passive",
+      "pattern": "되어지|되어질|되어진|되어져|보여지|쓰여지|불려지|잊혀지|모아지|나뉘어지",
+      "category": "translationese",
+      "weight": 3,
+      "note": "이중 피동. 능동/단일 피동으로 (형성되어지며 → 형성되며)."
+    },
+    {
+      "id": "ko-mechanical-triad",
+      "pattern": "첫째[,.\\s][\\s\\S]{0,300}둘째[,.\\s][\\s\\S]{0,300}셋째",
+      "category": "structure",
+      "weight": 4,
+      "note": "기계적 첫째/둘째/셋째 나열."
+    },
+    {
+      "id": "ko-false-agency",
+      "pattern": "(?:데이터|시장|사회|기술|정책)(?:은|는|이|가)[^.!?\\n]{0,30}(?:말해준다|보상을|결정짓는|요구한다|만들어낸다)",
+      "category": "rhetoric",
+      "weight": 3,
+      "note": "무생물 주어에 사람 동사. 행위자를 밝힌다."
+    },
+    {
       "id": "despite-challenges",
       "pattern": "\\bdespite (?:these|its|the) (?:challenges|obstacles|difficulties)\\b",
       "category": "content",
@@ -335,7 +356,16 @@
       { "match": "구체 사례", "category": "translationese", "weight": 2 },
       { "match": "구체 방안", "category": "translationese", "weight": 2 },
       { "match": "구체 내용", "category": "translationese", "weight": 2 },
-      { "match": "구체 계획", "category": "translationese", "weight": 2 }
+      { "match": "구체 계획", "category": "translationese", "weight": 2 },
+      { "match": "에 있어서", "category": "translationese", "weight": 2 },
+      { "match": "인 것이다", "category": "rhetoric", "weight": 2 },
+      { "match": "라고 할 수 있다", "category": "filler", "weight": 2 },
+      { "match": "기대된다", "category": "conclusion", "weight": 2 },
+      { "match": "기대됩니다", "category": "conclusion", "weight": 2 },
+      { "match": "무엇보다 중요", "category": "significance", "weight": 2 },
+      { "match": "측면들", "category": "translationese", "weight": 1 },
+      { "match": "요소들", "category": "translationese", "weight": 1 },
+      { "match": "부분들", "category": "translationese", "weight": 1 }
     ]
   }
 }
