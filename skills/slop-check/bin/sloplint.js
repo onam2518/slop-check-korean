@@ -91,6 +91,11 @@ function computeStats(text) {
   const window = toks.slice(0, 500); // fixed window so length doesn't skew TTR
   const ttr = window.length ? new Set(window).size / window.length : 0;
 
+  // Korean eojeol type-token ratio (human ~0.82-0.86 measured; word cycling lowers it).
+  const eojeol = (text.match(/[가-힣]+/g) || []);
+  const koWin = eojeol.slice(0, 300);
+  const koTtr = koWin.length ? new Set(koWin).size / koWin.length : 0;
+
   const trigrams = new Map();
   for (let i = 0; i + 2 < toks.length; i++) {
     const t = `${toks[i]} ${toks[i + 1]} ${toks[i + 2]}`;
@@ -107,6 +112,7 @@ function computeStats(text) {
     meanSentenceLength: round2(mean),
     burstiness: round2(burstiness),
     typeTokenRatio: round2(ttr),
+    koTypeTokenRatio: round2(koTtr),
     trigramRepetition: round2(trigramRepetition),
   };
 }
@@ -123,6 +129,19 @@ function uniformityScore(stats) {
     score += 30 * Math.min(1, (stats.trigramRepetition - 0.04) / 0.1);
   }
   if (stats.wordCount < 120) score *= stats.wordCount / 120; // low confidence on short samples
+  return Math.min(100, score);
+}
+
+// Korean-calibrated uniformity: metronomic rhythm and word cycling, using the
+// measured human baselines (burstiness ~0.45, eojeol TTR ~0.82). Catches
+// marker-light slop that the phrase rules miss.
+function koUniformityScore(stats) {
+  let score = 0;
+  if (stats.burstiness < 0.40) score += 55 * ((0.40 - stats.burstiness) / 0.40); // metronomic
+  if (stats.koTypeTokenRatio > 0 && stats.koTypeTokenRatio < 0.72) {
+    score += 55 * ((0.72 - stats.koTypeTokenRatio) / 0.72); // word cycling
+  }
+  if (stats.tokenCount < 120) score *= stats.tokenCount / 120; // low confidence when short
   return Math.min(100, score);
 }
 
@@ -263,11 +282,14 @@ function analyzeText(raw, rules, opts = {}) {
   const tokenCount = stats.tokenCount;
 
   const pScore = patternScore(findings, tokenCount);
-  // English-calibrated burstiness/TTR/trigram stats do not transfer to Korean;
-  // lean almost entirely on pattern density there.
-  const uScore = uniformityScore(stats);
+  // English uniformity uses English-calibrated TTR/trigram; Korean uses its own
+  // metronomic + word-cycling score from measured Korean baselines.
+  const uScore = isKorean ? koUniformityScore(stats) : uniformityScore(stats);
+  // Korean: keep pattern density dominant (markers are the reliable signal) and
+  // add the stat signal on top rather than averaging it in, so a strong marker
+  // hit is never diluted. English keeps its weighted blend.
   const score = isKorean
-    ? Math.round(0.9 * pScore + 0.1 * uScore)
+    ? Math.min(100, Math.round(0.9 * pScore + 0.25 * uScore))
     : Math.round(0.7 * pScore + 0.3 * uScore);
 
   return {
@@ -471,9 +493,9 @@ function main() {
       console.log(`words: ${s.tokenCount}   sentences: ${s.sentenceCount}   mean sentence length: ${s.meanSentenceLength}`);
       console.log(`burstiness: ${s.burstiness}  (human tends > 0.45)`);
       if (ko) {
-        console.log('type-token ratio: n/a (Korean; TTR and trigram are English-calibrated)');
-        console.log('trigram repetition: n/a (Korean)');
-        console.log('note: on Korean text the score leans on pattern density, not these statistics.');
+        console.log(`type-token ratio (eojeol): ${s.koTypeTokenRatio}  (human tends > 0.8; lower = word cycling)`);
+        console.log('trigram repetition: n/a (Korean; English-calibrated)');
+        console.log('note: Korean score is pattern density plus a metronomic/low-diversity signal.');
       } else {
         console.log(`type-token ratio: ${s.typeTokenRatio}  (human tends > 0.45)`);
         console.log(`trigram repetition: ${s.trigramRepetition}  (human tends < 0.04)`);
