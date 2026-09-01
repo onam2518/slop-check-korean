@@ -1,6 +1,6 @@
 ---
 name: slop-check
-description: Detect and remove AI-writing slop from anything a project produces (prose, docs, READMEs, commit and PR text, code comments, code, and the agent's own replies) while keeping every fact and the author's voice intact. For Korean it does a holistic, natural correction: AI-slop and translationese plus 어문 규범 (맞춤법·띄어쓰기·호응·높임·조사) and standard-terminology lookup, aimed at output that reads as naturally human-written. Merges ten anti-slop skills into one catalog of about 75 patterns, a register table, density tests, Korean-language support, and a zero-dependency linter. Use when asked to check, audit, review, edit, humanize, deslop, correct grammar, "make it sound human", "does this sound like AI", "AI 티 나", "슬롭 제거", "검수해줘", "교정해줘", "문법 고쳐줘", "자연스럽게", "사람이 쓴 것처럼", or whenever prose is about to be delivered and must not read as machine-written.
+description: Remove AI-writing slop from any output (prose, docs, READMEs, commits, code comments, agent replies) while keeping every fact and the author's voice. For Korean, a holistic correction: translationese plus 어문 규범 (맞춤법·띄어쓰기·호응·높임·조사) and standard terminology, aimed at naturally human-written output. Ten anti-slop skills merged; ~75 patterns, register table, Korean support, zero-dependency linter. Use for check/audit/review/edit/humanize/deslop/correct-grammar, 검수·교정·슬롭 제거·자연스럽게·사람이 쓴 것처럼·AI 티, or any prose that must not read as machine-written.
 argument-hint: '[text | --file path | --dir path] [--mode audit|edit|rewrite|code|reply] [--register blog|technical|scientific|marketing|legal|support|social|email] [--voice sample.md] [--lang ko|en]'
 ---
 
@@ -12,7 +12,7 @@ North star: LLMs regress to the statistical mean. Humans are specific, uneven, a
 
 The whole skill rests on two commitments that outrank every fix below: **keep every fact and the author's voice**, and **treat tools and scores as evidence, never verdicts**. The Hard rules make these precise.
 
-**Stance (default output).** Removing slop — and preserving facts and voice — is the always-on core of this skill; it runs in every mode and is the bulk of the work (the catalog, the linter, the 규범 correction). The persona layer sits on top of it, never in place of it. After slop is removed, two modes decide what fills the space, by whether the source has a real author voice: when it does (personal blog, opinion, an author sample) — preserve it; when it does not (AI-generated output, boilerplate, a voiceless draft — this project's main case) — produce the standard voice in `references/persona.md` rather than leaving it generic. The persona is a default, not a lock: a user instruction (register, tone, "구어체로", `--voice`) overrides it, and it never changes facts.
+**Stance.** Slop removal plus fact/voice preservation is the always-on core (every mode, the bulk of the work). On top of it, two modes by whether the source has a real author voice: preserve it, or (voiceless generated output, this project's main case) supply the standard voice in `references/persona.md`. A user instruction overrides the persona; it never changes facts.
 
 ## Consensus core
 
@@ -79,49 +79,45 @@ These outrank every pattern below.
 
 ## Pattern catalog (compact)
 
-Eight families, ~75 patterns. This is the quick reference; **`references/patterns.md` has the full per-id list (A1–H9) with triggers, before/after pairs, and false-positive notes** — load it for a thorough audit or a contested call. The consensus core already covers the highest-signal members.
+Eight families, ~75 patterns. Terse index; the consensus core already covers the top-signal members, and **`references/patterns.md` has the full per-id list (A1–H9)** with triggers, before/after, and false-positive notes — load it for a thorough audit or a contested call.
 
-- **A. Content and claims** — significance inflation (pivotal moment, testament to, underscores importance); promotional adjectives (nestled, vibrant, seamless, world-class); superficial -ing tails (", highlighting/reflecting…"); vague attribution (experts argue, studies show); name-dropping; formulaic "despite challenges… thrives"; symbolic gloss (represents/embodies); grandiose stakes; hallucinated specifics; vague declaratives (the implications are significant); lazy extremes (every/always/never); invented concept labels ("the X paradox"); historical-analogy stacking. → name the fact, mechanism, number, or source; or cut.
-- **B. Vocabulary** — tier-1 (always flag): delve, tapestry, testament, underscore, leverage, multifaceted, realm, interplay, pivotal, meticulous, seamless, groundbreaking, transformative, paramount, myriad, cornerstone, empower, catalyst, nestled, unpack, deep dive, actionable, impactful, learnings, embark, garner, foster, showcase, vibrant, crucial, robust, intricate, enduring, synergy, "it's worth noting", "in today's landscape". Tier-2 (flag in clusters of 2+): additionally, furthermore, moreover, utilize, facilitate, nuanced, streamline, bolster, harness, elevate, leverage-family. Tier-3 (never alone): key, important, significant, various, effective. Also: business jargon/dead metaphors (move the needle, low-hanging fruit, north star); copula avoidance (serves as/stands as/boasts → is/has); weak verb phrases (has the ability to → can); magic adverbs (quietly, genuinely, truly, just, actually); hyphenated pairs after the noun.
-- **C. Sentence structure and rhetoric** — binary contrast (not X but Y; the question isn't X, it's Y) [top tell]; negative listing; dramatic fragmentation/staccato; self-posed questions ("The result? Devastating."); throat-clearing (here's the thing); faux-insight setups; colon reveals; emphasis crutches (let that sink in); fake-candid/infomercial hooks (Honestly?, The kicker?); pedagogical hand-holding (think of it as, imagine a world); aphorism/mic-drop kickers; depth-pretending (at its core, the real question is); answering objections nobody raised; rejecting fake alternatives; false vulnerability; correlative bloat; false ranges (from X to Y); inclusiveness padding; interpretive metadiscourse; signposting (let's dive in); hedged-enumeration openers; credential openers; Wh-cleft/"So,"/"Look," starters; hedging seesaw. → state the point directly.
-- **D. Voice and agency** — agentless passive (it is recommended, changes were made); false agency (the data tells us, the decision emerges); narrator-from-a-distance (nobody designed this, people tend to); synonym cycling; anaphora abuse. → name the actor (or "you"), pick one term, vary openings. Keep passive when the actor is unknown or the register uses agentless obligation on purpose.
-- **E. Rhythm and statistics** — uniform sentence length (low burstiness, the most measurable tell); rule-of-three reflex and tricolon stacking; parataxis / every-paragraph-ends-punchy; uniform paragraph length and identical templates; parallel sections / listicle-in-a-trench-coat; low vocabulary diversity and trigram repetition. → mix lengths, use the natural number, reconnect with subordination, repeat the clear word.
-- **F. Composition** — fractal summaries and signposted conclusions (In conclusion); section-closing recaps ("Whether you…"); generic positive endings (the future looks bright); one-point dilution / treadmill (in other words, put simply); dead metaphor beaten to death; paragraph-reshuffling immunity; heading echoed in first sentence; diff-anchored docs (was added to replace, previously); register shift / perfect-error alternation. → end on substance; make each paragraph depend on the last; describe current state.
-- **G. Formatting** — em/en dashes (none in short copy; a writing sample overrides); bold-first bullets and inline-header lists; erratic/overused bold; Title Case Headings; decorative emoji; curly quotes and unicode arrows (→); excessive structure; markdown bleeding into plain-text; question-format section titles / hashtag stacks / "🧵 Thread:"; exclamation and ellipsis overuse. → straight quotes, sentence case, structure follows content.
-- **H. Chatbot and tool artifacts** — chatbot phrases (I hope this helps, Certainly!); sycophancy (Great question!); cutoff disclaimers and speculative gap-fill; reasoning-chain artifacts (Let me think, Step 1:); acknowledgment loops; unfilled placeholders ([Your Name]); citation-markup leaks (citeturn0search0, utm_source=chatgpt.com); unicode obfuscation; the brief reprinted as artifact. → delete; state what the source lacks; never print instructions about the writing.
+- **A. Content/claims** — significance inflation, promo adjectives, superficial `-ing` tails, vague attribution (experts argue), formulaic "despite challenges", grandiose stakes, vague declaratives, lazy extremes (every/always), invented labels ("the X paradox"). → name the fact/mechanism/number/source, or cut.
+- **B. Vocabulary** — tier-1 (always flag): delve, tapestry, testament, underscore, leverage, seamless, robust, pivotal, showcase, foster, realm, multifaceted, myriad, empower, nestled, unpack, actionable, impactful, crucial, intricate, enduring, synergy, "it's worth noting", "in today's landscape". tier-2 (2+): additionally, furthermore, utilize, facilitate, streamline, harness. tier-3 (never alone): key, important, significant. Plus jargon (move the needle), copula (serves as/boasts → is/has), weak verbs (has the ability to → can), magic adverbs (quietly, just, actually).
+- **C. Structure/rhetoric** — binary contrast (not X but Y) [top tell]; negative listing; staccato fragments; self-posed Q ("The result? Devastating."); throat-clearing; faux-insight; colon reveals; hooks (Honestly?, The kicker?); pedagogical (think of it as, imagine a world); mic-drop kickers; depth-pretending (at its core); answering unraised objections; false ranges (X to Y); signposting (let's dive in); Wh-cleft / "So," / "Look," starters; hedging seesaw. → state the point.
+- **D. Voice/agency** — agentless passive; false agency (the data tells us); narrator-distance (people tend to); synonym cycling; anaphora. → name the actor or "you". Keep purposeful passive (unknown actor, register obligation).
+- **E. Rhythm/stats** — uniform sentence length (top measurable tell); rule-of-three; parataxis / punchy paragraph ends; uniform paragraphs; listicle-in-a-trench-coat; low vocab diversity. → mix lengths, natural number, repeat the clear word.
+- **F. Composition** — signposted conclusions (In conclusion); generic upbeat endings (the future looks bright); one-point dilution; dead metaphor; reshuffle-immune paragraphs; heading echoed in first sentence; diff-anchored docs. → end on substance; each paragraph depends on the last.
+- **G. Formatting** — em/en dashes (a writing sample overrides); bold-first bullets; overused bold; Title Case headings; emoji; unicode arrows (→); excessive structure; markdown in plain-text; hashtag stacks. → sentence case, structure follows content. Straight quotes in EN; Korean prose uses 굽은따옴표.
+- **H. Chatbot/tool** — chatbot phrases (I hope this helps); sycophancy (Great question!); cutoff disclaimers; reasoning-chain (Step 1:); placeholders ([Your Name]); citation leaks (utm_source=chatgpt.com); the brief reprinted as artifact. → delete.
 
 ## Register calibration
 
-| Register | Voice | Keep | Extra watch |
-|----------|-------|------|-------------|
-| Blog, essay, newsletter, opinion | Person in the room; "you" beats "people"; opinions, uncertainty, asides welcome | Humor, digressions, edge, first person | C-series hooks, F1-F3 endings, E-series rhythm |
-| Technical docs, README, API reference | Neutral, precise, one point per sentence; numbers over adjectives; exact term over simpler one | Repeated exact identifiers (`useEffect` stays `useEffect`) | A2 promo, B1 words, F8 diff-anchoring, G2 bold-bullets, G5 emoji |
-| Scientific (abstract, discussion, grant, review response) | Formal; "we" for own work; cite named authors; claims backed by citations | Domain terminology, hedges that carry real uncertainty, numbered limitations when the venue expects them | A3 -ing tails, A6 "despite challenges", A10 vague declaratives, "it has long been recognized" |
-| Marketing, product copy | Short paragraphs, concrete benefits, one call to action; evidence-bound | Brand terms from the source | A1, A2, A8 inflation; do not invent features, metrics, integrations, outcomes |
-| Legal, policy, incident, support | Neutral; obligations exact; agentless passive allowed on purpose | Scope words, qualifiers, promise boundaries | Never add "we will review / follow up / resolve" or quality labels ("auditable", "secure") not in the source |
-| Social, LinkedIn | No markdown headers, no bold, zero to two hashtags, at most one emoji | Era-bound voice, in-jokes | G8, G9, "Excited to announce", credential openers C22 |
-| Email, DM | Greeting and sign-off allowed; no markdown | Salutations predate chatbots | "I hope this finds you well", "As per my last email", H1 |
-| Korean (any register) | Holistic natural correction: see `references/korean.md` (통합 교정 순서) | Formal `~습니다` uniformity in official docs is correct | 어문 규범(맞춤법·띄어쓰기·호응·높임) via `korean-correction.md`; 서두 군더더기, 챗봇 마무리, 번역투, 이모지 라벨 불릿; 표준 용어 via `korean-terminology.md` |
+| Register | Voice / keep | Extra watch |
+|----------|--------------|-------------|
+| Blog, essay, opinion | Person in the room, "you" over "people"; keep humor, digressions, first person | C hooks, F1-F3 endings, E rhythm |
+| Technical, README, API | Neutral, precise, numbers over adjectives; keep exact identifiers (`useEffect` stays) | A2 promo, B1 words, F8 diff-anchoring, G2/G5 |
+| Scientific | Formal, "we" for own work, cite named authors; keep domain terms, real hedges | A3 -ing tails, A6 "despite challenges", A10 |
+| Marketing | Concrete benefits, one CTA, evidence-bound; keep source brand terms | A1/A2/A8 inflation; invent no features/metrics/outcomes |
+| Legal, policy, incident, support | Neutral, obligations exact, agentless passive OK on purpose; keep scope/qualifiers | never add "we will review/resolve" or "auditable/secure" not in source |
+| Social, LinkedIn | No headers/bold, 0-2 hashtags, ≤1 emoji; keep era-bound voice | G8/G9, "Excited to announce", C22 |
+| Email, DM | Greeting/sign-off OK, no markdown | "I hope this finds you well", "As per my last email", H1 |
+| Korean | Holistic correction, `references/korean.md`; 격식체 `~습니다` uniformity is correct | 어문 규범 via `korean-correction.md`, 번역투/서두/챗봇 마무리, 표준 용어 via `korean-terminology.md` |
 
-When the user supplies a writing sample, the sample outranks every style rule here, including G1. Match its sentence length, vocabulary, punctuation, and quirks. Do not add slang, typos, contractions, jokes, or confessions the sample does not support.
+A user-supplied writing sample outranks every rule here (including G1): match its length, vocabulary, punctuation, and quirks; add no slang/typos/jokes it does not support.
 
 ## Positive writing system
 
-Removing tells is half the job. Generate from a system so tells do not arrive.
-
-Orwell's six rules, applied as defaults: no printed-cliche metaphor; no long word where a short one works; cut every word that can be cut; active over passive with a named actor; no jargon with a plain equivalent; and break any rule sooner than write something unclear, untrue, or graceless. Rule six is what stops the first five from producing a new uniform template.
-
-When voice belongs (see register table): have an opinion and a named target; calibrate certainty on a spectrum instead of parking in flat medium confidence; use hard-to-fabricate specifics that come from the source; allow one tangent, one self-correction, one callback; vary paragraph length hard; end without wrapping up. Never invent a fact to create personality. Full guidance in `references/writing-system.md`.
+Removing tells is half the job; generate from a system so they do not arrive. Orwell's six rules as defaults (short word over long, cut deletable words, active with a named actor, no printed-cliche metaphor, no jargon with a plain equivalent, and break any rule sooner than write something graceless). Where voice belongs, add a stake, spectrum certainty, source-grounded specifics, and varied paragraph length; never invent a fact for personality. Measured craft targets and full guidance: `references/writing-system.md`.
 
 ## Density tests
 
-Run after editing; these catch bland-clean prose that passes phrase lint and still says nothing.
+Run after editing; catch bland-clean prose that passes phrase lint yet says nothing.
 
-- **Sentence-load:** each sentence adds a claim, example, constraint, image, number, named entity, decision, tradeoff, mechanism, consequence, contradiction, or change of stance. A sentence that only adds rhythm or transition merges or goes.
-- **Portability / topic-swap:** if a sentence could move unchanged to another company, product, or field, it is filler. Add the missing mechanism or cut.
-- **Summary-loss:** compress the passage by half. Strong prose loses specific ideas fast; scaffolding shrinks without loss.
-- **Reshuffle:** if paragraphs can be reordered without damage, the argument is not unfolding.
-- **Read aloud:** press release, encyclopedia, or support bot? Rewrite until a specific person could have said it.
+- **Sentence-load:** each sentence must add a claim, number, example, mechanism, consequence, or stance-shift, not just rhythm or transition.
+- **Portability:** a sentence that could move unchanged to another company/product/field is filler; add the mechanism or cut.
+- **Summary-loss:** compress by half; strong prose loses ideas fast, scaffolding shrinks without loss.
+- **Reshuffle:** if paragraphs reorder without damage, the argument is not unfolding.
+- **Read aloud:** press release, encyclopedia, or a person? Rewrite until a specific person could have said it.
 
 ## What not to flag
 
@@ -131,8 +127,8 @@ Preserve on sight: real addresses, odd quotes, measured numbers ("900ms to 40ms"
 
 ## Code, commits, and agent replies
 
-- **Code** (`references/code.md`): comments that restate the code, diff-narrating comments, defensive try/catch on trusted paths, `any` casts and ignore-pragmas to dodge types, deep nesting where an early return works, single-use abstractions, dead and commented-out code, emoji and banner comments, decorative logging, tests that assert nothing, README and commit bodies written in adjectives. Guardrail: behavior unchanged unless fixing a clear bug; match the surrounding file; keep comments that explain why.
-- **Agent replies** (`references/agent-replies.md`): honesty before structure before plain language. Separate what changed from what was verified ("Edited `auth.ts:42`. Tests not run."). Cut invented confidence and apology theater; keep the caveat that changes the user's next decision. Action first, numbered steps, one open next step, no preamble or closer, no sycophancy. Estimate in turns and tool calls, not human calendar time.
+- **Code** (`references/code.md`): comments restating the code, diff-narrating comments, defensive try/catch on trusted paths, `any`/ignore-pragmas to dodge types, deep nesting, single-use abstractions, dead code, banner/emoji comments, decorative logging, README/commit bodies in adjectives. Behavior unchanged unless fixing a clear bug; match the file; keep comments that explain why.
+- **Agent replies** (`references/agent-replies.md`): honesty > structure > plain language. Separate what changed from what was verified ("Edited `auth.ts:42`. Tests not run."). Cut invented confidence and apology theater; keep the load-bearing caveat. Action first; no preamble/closer/sycophancy; estimate in turns and tool calls, not calendar time.
 
 ## Output
 
